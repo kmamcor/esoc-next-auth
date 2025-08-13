@@ -28,35 +28,35 @@
   ],
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "default": "./index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./adapters": {
-      "types": "./adapters.d.ts"
+      "types": "./dist/adapters.d.ts"
     },
     "./jwt": {
-      "types": "./jwt/index.d.ts",
-      "default": "./jwt/index.js"
+      "types": "./dist/jwt/index.d.ts",
+      "default": "./dist/jwt/index.js"
     },
     "./react": {
-      "types": "./react/index.d.ts",
-      "default": "./react/index.js"
+      "types": "./dist/react/index.d.ts",
+      "default": "./dist/react/index.js"
     },
     "./next": {
-      "types": "./next/index.d.ts",
-      "default": "./next/index.js"
+      "types": "./dist/next/index.d.ts",
+      "default": "./dist/next/index.js"
     },
     "./middleware": {
-      "types": "./middleware.d.ts",
-      "default": "./middleware.js"
+      "types": "./dist/middleware.d.ts",
+      "default": "./dist/middleware.js"
     },
     "./client/_utils": {
-      "types": "./client/_utils.d.ts",
-      "default": "./client/_utils.js"
+      "types": "./dist/client/_utils.d.ts",
+      "default": "./dist/client/_utils.js"
     },
     "./providers/*": {
-      "types": "./providers/*.d.ts",
-      "default": "./providers/*.js"
+      "types": "./dist/providers/*.d.ts",
+      "default": "./dist/providers/*.js"
     }
   },
   "scripts": {
