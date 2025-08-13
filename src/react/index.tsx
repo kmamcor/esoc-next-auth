@@ -263,7 +263,16 @@ export async function signIn<
     }),
   })
 
-  const data = await res.json()
+  let data
+  try {
+    data = await res.text()
+    console.log(data)
+    data = JSON.parse(data)
+  } catch (error) {
+    console.log("Error in SignIn: ", error)
+  }
+
+
 
   // TODO: Do not redirect for Credentials and Email providers by default in next major
   if (redirect || !isSupportingReturn) {
