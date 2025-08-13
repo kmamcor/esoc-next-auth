@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import type { Session } from "..";
 import type { BuiltInProviderType, ProviderType } from "../providers";
 export interface UseSessionOptions<R extends boolean> {
@@ -10,7 +9,7 @@ export interface UseSessionOptions<R extends boolean> {
  * Util type that matches some strings literally, but allows any other string as well.
  * @source https://github.com/microsoft/TypeScript/issues/29729#issuecomment-832522611
  */
-export declare type LiteralUnion<T extends U, U = string> = T | (U & Record<never, never>);
+export type LiteralUnion<T extends U, U = string> = T | (U & Record<never, never>);
 export interface ClientSafeProvider {
     id: LiteralUnion<BuiltInProviderType>;
     name: string;
@@ -35,7 +34,7 @@ export interface SignInResponse {
     url: string | null;
 }
 /** Match `inputType` of `new URLSearchParams(inputType)` */
-export declare type SignInAuthorizationParams = string | string[][] | Record<string, string> | URLSearchParams;
+export type SignInAuthorizationParams = string | string[][] | Record<string, string> | URLSearchParams;
 /** [Documentation](https://next-auth.js.org/getting-started/client#using-the-redirect-false-option-1) */
 export interface SignOutResponse {
     url: string;

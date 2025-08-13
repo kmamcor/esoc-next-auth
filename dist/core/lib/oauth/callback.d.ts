@@ -14,14 +14,14 @@ export default function oAuthCallback(params: {
     cookies: Cookie[];
     profile?: import("../../types").User | undefined;
     account?: {
-        access_token?: string | undefined;
-        token_type?: string | undefined;
-        id_token?: string | undefined;
-        refresh_token?: string | undefined;
-        expires_in?: number | undefined;
-        expires_at?: number | undefined;
-        session_state?: string | undefined;
-        scope?: string | undefined;
+        access_token?: string;
+        token_type?: string;
+        id_token?: string;
+        refresh_token?: string;
+        expires_in?: number;
+        expires_at?: number;
+        session_state?: string;
+        scope?: string;
         provider: string;
         type: "oauth";
         providerAccountId: string;

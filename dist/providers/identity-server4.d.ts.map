@@ -1,1 +1,1 @@
-{"version":3,"file":"identity-server4.d.ts","sourceRoot":"","sources":["../src/providers/identity-server4.js"],"names":[],"mappings":"AAAA,wCAAwC;AACxC,kIAmBC"}
+{"version":3,"file":"identity-server4.d.ts","sourceRoot":"","sources":["../../src/providers/identity-server4.js"],"names":[],"mappings":""}

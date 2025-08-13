@@ -4,8 +4,8 @@ import { CtxOrReq } from "../client/_utils";
 import type { ClientSafeProvider, LiteralUnion, SessionProviderProps, SignInAuthorizationParams, SignInOptions, SignInResponse, SignOutParams, SignOutResponse, UseSessionOptions } from "./types";
 import type { BuiltInProviderType, RedirectableProviderType } from "../providers";
 export * from "./types";
-declare type UpdateSession = (data?: any) => Promise<Session | null>;
-export declare type SessionContextValue<R extends boolean = false> = R extends true ? {
+type UpdateSession = (data?: any) => Promise<Session | null>;
+export type SessionContextValue<R extends boolean = false> = R extends true ? {
     update: UpdateSession;
     data: Session;
     status: "authenticated";
@@ -38,7 +38,7 @@ export declare const SessionContext: React.Context<{
  * [Documentation](https://next-auth.js.org/getting-started/client#usesession)
  */
 export declare function useSession<R extends boolean>(options?: UseSessionOptions<R>): SessionContextValue<R>;
-export declare type GetSessionParams = CtxOrReq & {
+export type GetSessionParams = CtxOrReq & {
     event?: "storage" | "timer" | "hidden" | string;
     triggerEvent?: boolean;
     broadcast?: boolean;
@@ -60,7 +60,7 @@ export declare function getCsrfToken(params?: CtxOrReq): Promise<string | undefi
  *
  * [Documentation](https://next-auth.js.org/getting-started/client#getproviders)
  */
-export declare function getProviders(): Promise<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null>;
+export declare function getProviders(): Promise<Record<LiteralUnion<BuiltInProviderType>, ClientSafeProvider> | null>;
 /**
  * Client-side method to initiate a signin flow
  * or send the user to the signin page listing all possible providers.

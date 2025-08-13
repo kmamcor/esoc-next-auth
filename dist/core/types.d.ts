@@ -4,7 +4,7 @@ import type { TokenSetParameters } from "openid-client";
 import type { JWT, JWTOptions } from "../jwt";
 import type { LoggerInstance } from "../utils/logger";
 import type { CookieSerializeOptions } from "cookie";
-export declare type Awaitable<T> = T | PromiseLike<T>;
+export type Awaitable<T> = T | PromiseLike<T>;
 export type { LoggerInstance };
 /**
  * Configure your NextAuth instance
@@ -207,7 +207,7 @@ export interface Theme {
  * Some of them are available with different casing,
  * but they refer to the same value.
  */
-export declare type TokenSet = TokenSetParameters;
+export type TokenSet = TokenSetParameters;
 /**
  * Usually contains information about the provider being used
  * and also extends `TokenSet`, which is different tokens returned by OAuth Providers.
@@ -434,7 +434,7 @@ export interface EventCallbacks {
         token: JWT;
     }) => Awaitable<void>;
 }
-export declare type EventType = keyof EventCallbacks;
+export type EventType = keyof EventCallbacks;
 /** [Documentation](https://next-auth.js.org/configuration/pages) */
 export interface PagesOptions {
     signIn: string;
@@ -445,7 +445,7 @@ export interface PagesOptions {
     /** If set, new users will be directed here on first sign in */
     newUser: string;
 }
-export declare type ISODateString = string;
+export type ISODateString = string;
 export interface DefaultSession {
     user?: {
         name?: string | null;
@@ -465,7 +465,7 @@ export interface DefaultSession {
  */
 export interface Session extends DefaultSession {
 }
-export declare type SessionStrategy = "jwt" | "database";
+export type SessionStrategy = "jwt" | "database";
 /** [Documentation](https://next-auth.js.org/configuration/options#session) */
 export interface SessionOptions {
     /**
@@ -518,5 +518,5 @@ export interface DefaultUser {
  */
 export interface User extends DefaultUser {
 }
-export declare type AuthAction = "providers" | "session" | "csrf" | "signin" | "signout" | "callback" | "verify-request" | "error" | "_log";
+export type AuthAction = "providers" | "session" | "csrf" | "signin" | "signout" | "callback" | "verify-request" | "error" | "_log";
 //# sourceMappingURL=types.d.ts.map

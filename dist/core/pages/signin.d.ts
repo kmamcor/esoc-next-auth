@@ -1,10 +1,9 @@
-/// <reference types="react" />
 import type { InternalProvider, Theme } from "../types";
 /**
  * The following errors are passed as error query parameters to the default or overridden sign-in page.
  *
  * [Documentation](https://next-auth.js.org/configuration/pages#sign-in-page) */
-export declare type SignInErrorTypes = "Signin" | "OAuthSignin" | "OAuthCallback" | "OAuthCreateAccount" | "EmailCreateAccount" | "Callback" | "OAuthAccountNotLinked" | "EmailSignin" | "CredentialsSignin" | "SessionRequired" | "default";
+export type SignInErrorTypes = "Signin" | "OAuthSignin" | "OAuthCallback" | "OAuthCreateAccount" | "EmailCreateAccount" | "Callback" | "OAuthAccountNotLinked" | "EmailSignin" | "CredentialsSignin" | "SessionRequired" | "default";
 export interface SignInServerPageParams {
     csrfToken: string;
     providers: InternalProvider[];

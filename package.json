@@ -11,9 +11,9 @@
     "Lluis Agusti <hi@llu.lu>",
     "Thang Huu Vu <hi@thvu.dev>"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "keywords": [
     "react",
     "nodejs",
@@ -26,39 +26,6 @@
     "oidc",
     "nextauth"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./adapters": {
-      "types": "./dist/adapters.d.ts"
-    },
-    "./jwt": {
-      "types": "./dist/jwt/index.d.ts",
-      "default": "./dist/jwt/index.js"
-    },
-    "./react": {
-      "types": "./dist/react/index.d.ts",
-      "default": "./dist/react/index.js"
-    },
-    "./next": {
-      "types": "./dist/next/index.d.ts",
-      "default": "./dist/next/index.js"
-    },
-    "./middleware": {
-      "types": "./dist/middleware.d.ts",
-      "default": "./dist/middleware.js"
-    },
-    "./client/_utils": {
-      "types": "./dist/client/_utils.d.ts",
-      "default": "./dist/client/_utils.js"
-    },
-    "./providers/*": {
-      "types": "./dist/providers/*.d.ts",
-      "default": "./dist/providers/*.js"
-    }
-  },
   "scripts": {
     "build": "tsc",
     "build:js": "pnpm generate-providers && pnpm tsc --project tsconfig.json && babel --config-file ./config/babel.config.js src --out-dir ./dist --extensions \".tsx,.ts,.js,.jsx\"",
