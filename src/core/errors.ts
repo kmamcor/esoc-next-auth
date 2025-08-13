@@ -17,6 +17,7 @@ export class UnknownError extends Error {
   }
 
   toJSON() {
+    console.log("Error at toJSON")
     return {
       name: this.name,
       message: this.message,
