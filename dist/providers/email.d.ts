@@ -8,7 +8,7 @@ import * as StreamTransport from "nodemailer/lib/stream-transport/index.js";
 import type { Awaitable } from "..";
 import type { CommonProviderOptions } from ".";
 import type { Theme } from "../core/types";
-type AllTransportOptions = string | SMTPTransport | SMTPTransport.Options | SMTPPool | SMTPPool.Options | SendmailTransport | SendmailTransport.Options | StreamTransport | StreamTransport.Options | JSONTransport | JSONTransport.Options | SESTransport | SESTransport.Options | Transport<any> | TransportOptions;
+declare type AllTransportOptions = string | SMTPTransport | SMTPTransport.Options | SMTPPool | SMTPPool.Options | SendmailTransport | SendmailTransport.Options | StreamTransport | StreamTransport.Options | JSONTransport | JSONTransport.Options | SESTransport | SESTransport.Options | Transport<any> | TransportOptions;
 export interface SendVerificationRequestParams {
     identifier: string;
     url: string;
@@ -78,8 +78,8 @@ export interface EmailConfig extends CommonProviderOptions {
     generateVerificationToken?: () => Awaitable<string>;
     normalizeIdentifier?: (identifier: string) => string;
 }
-export type EmailProvider = (options: EmailUserConfig) => EmailConfig;
-export type EmailProviderType = "Email";
+export declare type EmailProvider = (options: EmailUserConfig) => EmailConfig;
+export declare type EmailProviderType = "Email";
 export default function Email(options: EmailUserConfig): EmailConfig;
 export {};
 //# sourceMappingURL=email.d.ts.map
