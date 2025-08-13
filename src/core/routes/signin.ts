@@ -23,17 +23,20 @@ export default async function signin(params: {
   }
 
   if (provider.type === "oauth") {
-    logger.debug("Options:", options)
-    logger.debug("Query:", query)
+    // logger.debug("Options:", options)
+    // logger.debug("Query:", query)
     try {
       const response = await getAuthorizationUrl({ options, query })
       return response
     } catch (error) {
-      logger.debug("error before logger:", error)
-      logger.error("SIGNIN_OAUTH_ERROR", {
-        error: error as Error,
-        providerId: provider.id,
-      })
+      // logger.debug("error before logger:", error)
+
+      logger.error("error before logger:", {error: new Error, foobar: error, options, query})
+
+      // logger.error("SIGNIN_OAUTH_ERROR", {
+      //   error: error as Error,
+      //   providerId: provider.id,
+      // })
       return { redirect: `${url}/error?error=OAuthSignin` }
     }
   } else if (provider.type === "email") {
