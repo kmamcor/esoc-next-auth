@@ -1,3 +1,4 @@
+import logger from "src/utils/logger"
 import type { EventCallbacks, InternalOptions, LoggerInstance } from ".."
 
 /**
@@ -17,7 +18,7 @@ export class UnknownError extends Error {
   }
 
   toJSON() {
-    console.log("Error at toJSON")
+    logger.debug("Error at toJSON", '')
     return {
       name: this.name,
       message: this.message,

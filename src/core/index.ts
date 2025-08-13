@@ -47,10 +47,10 @@ export interface NextAuthHandlerParams {
 async function getBody(req: Request): Promise<Record<string, any> | undefined> {
   try {
     const text = await req.text()
-    console.log(text)
+    logger.debug("text", text)
     return JSON.parse(text)
   } catch (error) {
-    console.log("Error in getBody: ", error)
+    logger.debug("Error in getBody: ", error)
   }
 }
 

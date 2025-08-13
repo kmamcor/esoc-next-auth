@@ -266,10 +266,10 @@ export async function signIn<
   let data
   try {
     data = await res.text()
-    console.log(data)
+    logger.debug("Signin data:", data)
     data = JSON.parse(data)
   } catch (error) {
-    console.log("Error in SignIn: ", error)
+    logger.debug("Error in SignIn: ", error)
   }
 
 
