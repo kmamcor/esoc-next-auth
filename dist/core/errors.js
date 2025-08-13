@@ -37,7 +37,6 @@ var UnknownError = exports.UnknownError = function (_Error) {
   return (0, _createClass2.default)(UnknownError, [{
     key: "toJSON",
     value: function toJSON() {
-      console.log("toJSON Error:")
       return {
         name: this.name,
         message: this.message,

@@ -2,7 +2,7 @@ import type { NextMiddleware, NextFetchEvent } from "next/server";
 import type { Awaitable, CookieOption, AuthOptions } from "..";
 import type { JWT, JWTOptions } from "../jwt";
 import { NextRequest } from "next/server";
-type AuthorizedCallback = (params: {
+declare type AuthorizedCallback = (params: {
     token: JWT | null;
     req: NextRequest;
 }) => Awaitable<boolean>;
@@ -76,14 +76,14 @@ export interface NextAuthMiddlewareOptions {
      */
     secret?: string;
 }
-type NextMiddlewareResult = ReturnType<NextMiddleware> | void;
+declare type NextMiddlewareResult = ReturnType<NextMiddleware> | void;
 export interface NextRequestWithAuth extends NextRequest {
     nextauth: {
         token: JWT | null;
     };
 }
-export type NextMiddlewareWithAuth = (request: NextRequestWithAuth, event: NextFetchEvent) => NextMiddlewareResult | Promise<NextMiddlewareResult>;
-export type WithAuthArgs = [NextRequestWithAuth] | [NextRequestWithAuth, NextFetchEvent] | [NextRequestWithAuth, NextAuthMiddlewareOptions] | [NextMiddlewareWithAuth] | [NextMiddlewareWithAuth, NextAuthMiddlewareOptions] | [NextAuthMiddlewareOptions] | [];
+export declare type NextMiddlewareWithAuth = (request: NextRequestWithAuth, event: NextFetchEvent) => NextMiddlewareResult | Promise<NextMiddlewareResult>;
+export declare type WithAuthArgs = [NextRequestWithAuth] | [NextRequestWithAuth, NextFetchEvent] | [NextRequestWithAuth, NextAuthMiddlewareOptions] | [NextMiddlewareWithAuth] | [NextMiddlewareWithAuth, NextAuthMiddlewareOptions] | [NextAuthMiddlewareOptions] | [];
 /**
  * Middleware that checks if the user is authenticated/authorized.
  * If if they aren't, they will be redirected to the login page.

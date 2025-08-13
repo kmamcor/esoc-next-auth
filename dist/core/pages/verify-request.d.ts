@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { Theme } from "../..";
 import { InternalUrl } from "../../utils/parse-url";
 interface VerifyRequestPageProps {

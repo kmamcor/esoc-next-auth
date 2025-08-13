@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import type { Awaitable } from "..";
 export interface DefaultJWT extends Record<string, unknown> {
     name?: string | null;
@@ -22,7 +23,7 @@ export interface JWTEncodeParams {
      */
     salt?: string;
     /** The key material used to encode the NextAuth.js issued JWTs. Defaults to `NEXTAUTH_SECRET`. */
-    secret: string | Uint8Array<ArrayBufferLike>;
+    secret: string | Buffer;
     /**
      * The maximum age of the NextAuth.js issued JWT in seconds.
      * @default 30 * 24 * 60 * 60 // 30 days
@@ -39,7 +40,7 @@ export interface JWTDecodeParams {
      */
     salt?: string;
     /** The key material used to decode the NextAuth.js issued JWTs. Defaults to `NEXTAUTH_SECRET`. */
-    secret: string | Uint8Array<ArrayBufferLike>;
+    secret: string | Buffer;
 }
 export interface JWTOptions {
     /**
@@ -58,5 +59,5 @@ export interface JWTOptions {
     /** Override this method to control the NextAuth.js issued JWT decoding. */
     decode: (params: JWTDecodeParams) => Awaitable<JWT | null>;
 }
-export type Secret = string | Buffer;
+export declare type Secret = string | Buffer;
 //# sourceMappingURL=types.d.ts.map
