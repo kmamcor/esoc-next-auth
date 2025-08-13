@@ -23,10 +23,13 @@ export default async function signin(params: {
   }
 
   if (provider.type === "oauth") {
+    console.log("Options:", options)
+    console.log("Query:", query)
     try {
       const response = await getAuthorizationUrl({ options, query })
       return response
     } catch (error) {
+      console.log("error before logger:", error)
       logger.error("SIGNIN_OAUTH_ERROR", {
         error: error as Error,
         providerId: provider.id,
