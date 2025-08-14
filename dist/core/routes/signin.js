@@ -31,7 +31,7 @@ async function signin(params) {
       return response;
     } catch (error) {
       logger.debug("error before logger:", {error, options, query})
-      logger.error("error before logger:", {error, options, query})
+      logger.error("error before logger:", {error, json: JSON.stringify({error, options, query})})
       logger.error("SIGNIN_OAUTH_ERROR", {
         error: error,
         providerId: provider.id,
