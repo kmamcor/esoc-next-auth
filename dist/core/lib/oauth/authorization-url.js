@@ -55,7 +55,10 @@ async function getAuthorizationUrl({
       redirect: url
     };
   }
-  const client = await (0, _client.openidClient)(options);
+  var client
+  try{ client = await (0, _client.openidClient)(options);} catch (error) {
+    logger.error("Client error in auth url file:", {error, params})
+  }
   const authorizationParams = params;
   const cookies = [];
   await checks.state.create(options, cookies, authorizationParams);

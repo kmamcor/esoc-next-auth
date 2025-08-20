@@ -23,16 +23,27 @@ export default async function signin(params: {
   }
 
   if (provider.type === "oauth") {
-    try {
-      const response = await getAuthorizationUrl({ options, query })
-      return response
-    } catch (error) {
-      logger.error("SIGNIN_OAUTH_ERROR", {
-        error: error as Error,
-        providerId: provider.id,
-      })
-      return { redirect: `${url}/error?error=OAuthSignin` }
+    let maxRetries = 10
+    let delayMs = 1000
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const response = await getAuthorizationUrl({ options, query });
+        return response;
+      } catch (error) {
+        logger.error("SIGNIN_OAUTH_ERROR", {
+          error: error as Error,
+          providerId: provider.id,
+          attempt,
+        });
+
+        if (attempt < maxRetries) {
+          await new Promise((resolve) => setTimeout(resolve, (delayMs/2)*attempt));
+        } else {
+          return { redirect: `${url}/error?error=OAuthSignin` };
+        }
+      }
     }
+
   } else if (provider.type === "email") {
     let email: string = body?.email
     if (!email) return { redirect: `${url}/error?error=EmailSignin` }
