@@ -26,6 +26,7 @@ export default async function signin(params: {
     let maxRetries = 10
     let delayMs = 1000
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      logger.error("Attempt. ", {error: new Error,attempt})
       try {
         const response = await getAuthorizationUrl({ options, query });
         return response;
@@ -37,6 +38,7 @@ export default async function signin(params: {
         });
 
         if (attempt < maxRetries) {
+          logger.error("Retry", {error: new Error})
           await new Promise((resolve) => setTimeout(resolve, (delayMs/2)*attempt));
         } else {
           return { redirect: `${url}/error?error=OAuthSignin` };
