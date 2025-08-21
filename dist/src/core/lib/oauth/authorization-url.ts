@@ -47,17 +47,36 @@ export default async function getAuthorizationUrl({
     return { redirect: url }
   }
 
-  const client = await openidClient(options)
+  let maxRetries = 5
+  let delayMs = 1000
+  const authorizationParams: AuthorizationParameters = params;
+  const cookies: Cookie[] = [];
 
-  const authorizationParams: AuthorizationParameters = params
-  const cookies: Cookie[] = []
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const client = await openidClient(options);
 
-  await checks.state.create(options, cookies, authorizationParams)
-  await checks.pkce.create(options, cookies, authorizationParams)
-  await checks.nonce.create(options, cookies, authorizationParams)
+      await checks.state.create(options, cookies, authorizationParams);
+      await checks.pkce.create(options, cookies, authorizationParams);
+      await checks.nonce.create(options, cookies, authorizationParams);
 
-  const url = client.authorizationUrl(authorizationParams)
+      const url = client.authorizationUrl(authorizationParams);
 
-  logger.debug("GET_AUTHORIZATION_URL", { url, cookies, provider })
-  return { redirect: url, cookies }
+      logger.debug("client.authorizationUrl", { url, cookies, provider });
+      return { redirect: url, cookies };
+    } catch (error) {
+      logger.error("client.authorizationUrl Error", {
+        error: error as Error,
+        attempt,options, cookies, authorizationParams
+      });
+
+      if (attempt < maxRetries) {
+        await new Promise((resolve) => setTimeout(resolve, (delayMs/2)*attempt));
+      } else {
+        return { redirect: `${options.url}/error?error=OAuthSignin` };
+      }
+    }
+  }
+
+  
 }
